@@ -1,3 +1,6 @@
+<?php require_once './conect.php' ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +11,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
-
     <marquee>Hà Nội: 49 Thái Hà | 151 Lê Thanh Nghị và 63 Trần Thái Tông ● HCM: 158 - 160 Lý Thường Kiệt | 330-332 Võ Văn Tần ● Bắc Ninh: Số 4 Nguyễn Văn Cừ - Ninh Xá </marquee>
 
     <div class="header">
 
         <h1 class="logo">MiniShop</h1>
 
-        <input placeholder="Searth the internet..." type="text" name="text" class="input">
+        <input placeholder="Searth the internet..." type="text" name="keyword" class="input">
         
         <ul class="menu-header">
             <button class="menu-btn">Hỗ trợ</button>
             <button class="menu-btn">Điều khoản</button>
             <li>
-                <a href="#"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span></a>
+                <a href="index.php"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span></a>
             </li>
             <li>
-                <a href="#"><span class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span></a>
+                <a href="login.php"><span class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span></a>
             </li>
             <li>
                 <a href="#"><span class="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span></a>
@@ -36,7 +38,7 @@
         
         <ul class="menu-home">
             <li class="container"><button>Di động</button>
-                <div class="menu-container-slide">
+                <!-- <div class="menu-container-slide">
                     <ul>
                         <li><p>Galaxy S</p></li>
                         <li><p>Galaxy Z</p></li>
@@ -44,34 +46,34 @@
                         <li><p>Galaxy M</p></li>
                     </ul>
                 </div>
-            </li>
+            </li> -->
             <li class="container"><button>TV&AV</button>
-                <div class="menu-container-slide">
+                <!-- <div class="menu-container-slide">
                     <ul>
                         <li><p>Neo QLED</p></li>
                         <li><p>QLED</p></li>
                         <li><p>OLED</p></li>
                     </ul>
                 </div>
-            </li>
+            </li> -->
             <li class="container"><button>Máy giặt</button>
-                <div class="menu-container-slide">
+                <!-- <div class="menu-container-slide">
                     <ul>
                         <li><p>Máy Giặt Cửa Trước</p></li>
                         <li><p>Máy Giặt Cửa Trên</p></li>
                         <li><p>Máy Giặt Kèm Sấy</p></li>
                     </ul>
-                </div>
+                </div> -->
             </li>
             <li class="container"><button>Tủ lạnh</button>
-                <div class="menu-container-slide">
+                <!-- <div class="menu-container-slide">
                     <ul>
                         <li><p>Tủ Lạnh BESPOKE</p></li>
                         <li><p>Tủ Lạnh Multidoor</p></li>
                         <li><p>Tủ Lạnh Side by Side</p></li>
                     </ul>
                 </div>
-            </li>
+            </li> -->
             <li class="container"><button>Phụ kiện</button></li>
         </ul> 
 
@@ -106,36 +108,22 @@
     </div>
 
     <div class="product-show">
-        <div class="product-card">
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/vn/2401/gallery/vn-galaxy-s24-s928-490234-sm-s928blbqxxv-thumb-539385877?$252_252_PNG$">
-            <h3>product-card</h3>
-            <p>33.990.000 ₫</p>
-            <button>Mua ngay <i class="fa-solid fa-cart-shopping"></i></button>
+    <?php 
+    $sql = "SELECT * FROM product";
+    $result = mysqli_query( $conn, $sql );
+    $id_product = 1;
+    while ( $row = mysqli_fetch_assoc( $result ) ) {
+        echo"
+        <div class='product-card'>
+            <h6>".$id_product++."</h6>
+            <img src=".$row['img_product'].">
+            <h3>".$row['name_product']."</h3>
+            <p>".$row['price']."</p>
+            <button>Mua ngay <i class='fa-solid fa-cart-shopping'></i></button>
         </div>
-        <div class="product-card">
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/vn/2307/gallery/vn-galaxy-z-flip5-f731-sm-f731blgexxv-thumb-537229869?$252_252_PNG$">
-            <h3>product-card</h3>
-            <p>33.990.000 ₫</p>
-            <button>Mua ngay <i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="product-card">
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/vn/2307/gallery/vn-galaxy-z-fold5-f946-sm-f946blbgxxv-thumb-537229907?$252_252_PNG$">
-            <h3>product-card</h3>
-            <p>33.990.000 ₫</p>
-            <button>Mua ngay <i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="product-card">
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/vn/sm-a546elgdxxv/gallery/vn-galaxy-a54-5g-sm-a546-sm-a546elgdxxv-thumb-535765740?$252_252_PNG$">
-            <h3>product-card</h3>
-            <p>33.990.000 ₫</p>
-            <button>Mua ngay <i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="product-card">
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/vn/sm-m546bdbhxxv/gallery/vn-galaxy-m54-5g-sm-m546-sm-m546bdbhxxv-thumb-538801656?$252_252_PNG$">
-            <h3>product-card</h3>
-            <p>33.990.000 ₫</p>
-            <button>Mua ngay <i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
+        ";
+    }
+    ?>  
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
