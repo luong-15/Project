@@ -311,9 +311,10 @@ a:hover .icon {
 }
 
 .product-card {
+    display: none;
     position: relative;
     width: 300px;
-    height: 410px;
+    height: 430px;
     border-radius: 10px;
     margin: 0px 30px 40px 30px;
     padding-top: 4px;
@@ -333,11 +334,15 @@ a:hover .icon {
 }
 
 .product-card h3 {
+    width: 295px;
     cursor: context-menu;
     position: relative;
     text-transform: uppercase;
-    margin: 15px 0 10px 0;
+    margin: 15px 6px 10px 6px;
     font-family: "Open Sans", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-card p {
@@ -366,4 +371,43 @@ a:hover .icon {
     background-color: black;
     color: #fff;
     transform: scale(1.1);
+}
+
+/* .hidden {
+    display: none;
+} */
+
+.show-popup {
+	position: fixed;
+	top: 26%;
+	right: 22%;
+	width: 800px;
+    height: 360px;
+    z-index: 10;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0.5em black;
+}
+
+.show-popup img {
+    position: relative;
+    border-radius: 10px;
+    width: 800px;
+    height: 360px; 
+}
+
+.show-popup button {
+    position: absolute;
+    cursor: pointer;
+    font-size: 45px;
+    font-family: 'Poppins';
+    padding-left: 12px;
+    border: none;
+    background: none;
+    color: rgba(243, 236, 236, 0.899);
+}
+
+.show-popup button:active {
+    transform: scale(.9);
+    transition: 0.3s ease-in-out opacity(0.2),
+                0.3s ease-in-out transform;
 }
